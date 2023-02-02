@@ -1,6 +1,7 @@
 package ru.osipov.springbootdemo.controller;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.osipov.springbootdemo.domain.Person;
 
@@ -10,7 +11,7 @@ public class HelloController {
     private String[] str;
 
     @PostMapping("/hello")
-    private String hello(@RequestBody Person guest) {
+    private String hello(@RequestBody @Validated Person guest) {
         return String.format("Привет %s %d лет, от %s %s!",
                 guest.getName(), guest.getAge(), str[0], str[1]);
     }
